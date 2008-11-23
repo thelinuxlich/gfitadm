@@ -10,11 +10,32 @@
 <project name="gfitadm" default="default" basedir=".">
     <description>Builds, tests, and runs the project gfitadm.</description>
     <import file="nbproject/build-impl.xml"/>
+    <property environment="env"/>
+    <path id="groovy.classpath">
+        <fileset dir="${env.GROOVY_HOME}/embeddable/"/>
+    </path>
+    <target name="run-easyb-tests">
+        <taskdef name="easyb" classname="org.disco.easyb.ant.BehaviorRunnerTask" classpathref="groovy.classpath">
+            <classpath>
+                <pathelement location="~/projects/toolbox/easyb/easyb-0.9.jar"/>
+            </classpath>
+        </taskdef>
+        <easyb failureProperty="easyb.failed">
+            <classpath>
+                <path refid="groovy.classpath" />
+                <pathelement path="build/classes/" />
+            </classpath>
+            <report location="build/story.txt" format="txtstory" />
+            <behaviors dir="test">
+                <include name="**/*Specification.groovy" />
+             </behaviors>
+        </easyb>
+    </target>
     <!--
 
-    There exist several targets which are by default empty and which can be 
-    used for execution of your tasks. These targets are usually executed 
-    before and after some main targets. They are: 
+    There exist several targets which are by default empty and which can be
+    used for execution of your tasks. These targets are usually executed
+    before and after some main targets. They are:
 
       -pre-init:                 called before initialization of project properties
       -post-init:                called after initialization of project properties
@@ -40,12 +61,12 @@
             </obfuscate>
         </target>
 
-    For list of available properties check the imported 
-    nbproject/build-impl.xml file. 
+    For list of available properties check the imported
+    nbproject/build-impl.xml file.
 
 
     Another way to customize the build is by overriding existing main targets.
-    The targets of interest are: 
+    The targets of interest are:
 
       -init-macrodef-javac:     defines macro for javac compilation
       -init-macrodef-junit:     defines macro for junit execution
@@ -53,7 +74,7 @@
       -init-macrodef-java:      defines macro for class execution
       -do-jar-with-manifest:    JAR building (if you are using a manifest)
       -do-jar-without-manifest: JAR building (if you are not using a manifest)
-      run:                      execution of project 
+      run:                      execution of project
       -javadoc-build:           Javadoc generation
       test-report:              JUnit report generation
 
@@ -65,10 +86,10 @@
             </exec>
         </target>
 
-    Notice that the overridden target depends on the jar target and not only on 
-    the compile target as the regular run target does. Again, for a list of available 
+    Notice that the overridden target depends on the jar target and not only on
+    the compile target as the regular run target does. Again, for a list of available
     properties which you can use, check the target you are overriding in the
-    nbproject/build-impl.xml file. 
+    nbproject/build-impl.xml file.
 
     -->
 </project>

@@ -1,0 +1,16 @@
+11 specifications (including 0 pending) executed, but status is failure! Total failures: 11
+
+  Specification: user
+    before create a test user for each spec
+    it should not be valid
+    it should require a login
+    it should require a login fill with letters (Upper and Lower cases) only
+    it should require a login with 4 letters or more
+    it should require a login with 15 letters or less
+    it should require a password
+    it should require a password fill with
+    letters (Upper and Lower cases) and numbers only
+    it should require a password with 6 letters or more
+    it should require a password with 12 letters or less
+    it should require a person_id
+    it should require a level_id
