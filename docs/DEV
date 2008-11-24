@@ -8,3 +8,9 @@ Groovy 1.5.5 or latter:
 
 Easyb 0.9 or latter:
     http://easyb.googlecode.com/files/easyb-0.9.tar.gz
+
+Posgresql 8.3.5 or latter:
+    http://www.postgresql.org/download/
+
+Postgresql JDBC 4:
+    http://jdbc.postgresql.org/download/postgresql-8.3-604.jdbc4.jar
