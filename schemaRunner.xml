@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SchemaRunner" default="create-schema" basedir=".">
+    <property environment="env"/>
+    <path id="groovy.classpath">
+        <fileset dir="${env.GROOVY_HOME}/embeddable/"/>
+    </path>
+    <taskdef name="groovyc" classname="org.codehaus.groovy.ant.Groovyc" classpathref="groovy.classpath"/>
+    <target name="create-schema" depends="run-schema"/>
+    <target name="compile-schema" description="Compiles SchemaCreator">
+        <groovyc destdir="build/classes" srcdir="src/GAR"
+            includes="SchemaCreator.groovy" classpathref="groovy.classpath">
+        </groovyc>
+    </target>
+    <target name="run-schema" depends="compile-schema" description="Run the Schema Creator">
+        <java classname="SchemaCreator">
+            <classpath refid="groovy.classpath"/>
+            <classpath location="build/classes"/>
+        </java>
+    </target>
+</project>

@@ -10,27 +10,6 @@
 <project name="gfitadm" default="default" basedir=".">
     <description>Builds, tests, and runs the project gfitadm.</description>
     <import file="nbproject/build-impl.xml"/>
-    <property environment="env"/>
-    <path id="groovy.classpath">
-        <fileset dir="${env.GROOVY_HOME}/embeddable/"/>
-    </path>
-    <target name="run-easyb-tests">
-        <taskdef name="easyb" classname="org.disco.easyb.ant.BehaviorRunnerTask" classpathref="groovy.classpath">
-            <classpath>
-                <pathelement location="~/projects/toolbox/easyb/easyb-0.9.jar"/>
-            </classpath>
-        </taskdef>
-        <easyb failureProperty="easyb.failed">
-            <classpath>
-                <path refid="groovy.classpath" />
-                <pathelement path="build/classes/" />
-            </classpath>
-            <report location="build/story.txt" format="txtstory" />
-            <behaviors dir="test">
-                <include name="**/*Specification.groovy" />
-             </behaviors>
-        </easyb>
-    </target>
     <!--
 
     There exist several targets which are by default empty and which can be
