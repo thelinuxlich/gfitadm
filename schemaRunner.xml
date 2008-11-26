@@ -7,12 +7,12 @@
     <taskdef name="groovyc" classname="org.codehaus.groovy.ant.Groovyc" classpathref="groovy.classpath"/>
     <target name="create-schema" depends="run-schema"/>
     <target name="compile-schema" description="Compiles SchemaCreator">
-        <groovyc destdir="build/classes" srcdir="src/GAR"
+        <groovyc destdir="build/classes" srcdir="src/gar"
             includes="SchemaCreator.groovy" classpathref="groovy.classpath">
         </groovyc>
     </target>
     <target name="run-schema" depends="compile-schema" description="Run the Schema Creator">
-        <java classname="SchemaCreator">
+        <java classname="gar.SchemaCreator">
             <classpath refid="groovy.classpath"/>
             <classpath location="build/classes"/>
         </java>
