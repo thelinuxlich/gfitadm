@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="EasybTestRunner" default="all" basedir=".">
+<project name="EasybRunner" default="all" basedir=".">
     <property environment="env"/>
     <path id="groovy.classpath">
-        <!-- <fileset dir="${env.GROOVY_HOME}/embeddable/"/> -->
-        <fileset dir="/home/lpincini/projects/toolbox/easyb/"/>
+        <fileset dir="${env.GROOVY_HOME}/embeddable/"/>
+        <!--<fileset dir="/home/lpincini/projects/toolbox/easyb/"/> -->
     </path>
     <target name="all" depends="run-easyb-stories"/>
     <target name="run-easyb-specs" description="Run all specifications">

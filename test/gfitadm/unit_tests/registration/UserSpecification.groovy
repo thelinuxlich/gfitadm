@@ -7,7 +7,7 @@ package gfitadm.unit_tests.registration
 import gfitadm.registration.User
 
 before "create a test user for each spec", {
-    test_user = new User()
+    def test_user = new User()
     test_user.with {
         login = "user"
         password = "123456"
@@ -17,7 +17,7 @@ before "create a test user for each spec", {
 }
 
 it "should not be valid", {
-    test_user_new = new User()
+    def test_user_new = new User()
     ensure(!test_user_new)
 }
 
