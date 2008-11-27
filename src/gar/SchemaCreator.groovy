@@ -2,9 +2,13 @@ package gar
 
 /**
  *
- * @author Alisson
+ * @author thelinuxlich
  */
 class SchemaCreator {
+
+    static main(args) {
+        def sc = new SchemaCreator()
+    }
 
     SchemaCreator() {
         try {
@@ -15,8 +19,8 @@ class SchemaCreator {
                 'org.postgresql.Driver'
             )
 
-            tabela_atual = "users"
-            println "Criando tabela $tabela_atual..."
+            def current_table = "users"
+            println "Creating table $current_table..."
 
             db.execute '''
                 DROP TABLE IF EXISTS users;
@@ -32,17 +36,16 @@ class SchemaCreator {
                 ADD CONSTRAINT id PRIMARY KEY(id);
             '''
 
-            def sql = "INSERT INTO users(login,password)VALUES(?,?);"
+            def sql = "INSERT INTO users(login,password) VALUES(?,?);"
             (1..10).each {
-                db.execute sql, ["user"+it,"testepass"]
+                db.execute sql, ["user"+it,"testpass"]
             }
 
             // Insira novas modificacoes no schema aqui
 
-            println "O banco de dados foi criado com sucesso!"
-        }
-        catch(Exception e) {
-            println "Erro na tabela $tabela_atual: "+e.toString()
+            println "Database created with sucess!"
+        } catch(Exception e) {
+            println "Table ERROR: $current_table: " + e.toString()
         }
     }
 }

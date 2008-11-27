@@ -1,8 +1,7 @@
 /**
  *
- * @author Leandro Pincini
+ * @author redpill
  */
-
 narrative "User's login" {
     as_a "Common user"
     i_want "To login"

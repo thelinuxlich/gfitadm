@@ -3,8 +3,8 @@ Deps:
 Netbeans 6.5 RC 2 or latter:
     http://download.netbeans.org/netbeans/6.5/rc/
 
-Groovy 1.5.5 or latter:
-    Enable groovy support on project's properties
+Groovy 1.6-beta-2 or latter:
+    http://dist.groovy.codehaus.org/distributions/groovy-binary-1.6-beta-2.zip
 
 Easyb 0.9 or latter:
     http://easyb.googlecode.com/files/easyb-0.9.tar.gz
@@ -14,3 +14,6 @@ Posgresql 8.3.5 or latter:
 
 Postgresql JDBC 4:
     http://jdbc.postgresql.org/download/postgresql-8.3-604.jdbc4.jar
+
+Miglayout 3.6 or latter:
+    http://www.migcalendar.com/miglayout/versions/3.6/miglayout-3.6.jar
