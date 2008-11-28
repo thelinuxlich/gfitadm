@@ -6,19 +6,15 @@ package gfitadm.unit_tests.registration
  */
 import gfitadm.registration.User
 
+def test_user = new User()
+
 before "create a test user for each spec", {
-    def test_user = new User()
     test_user.with {
         login = "user"
         password = "123456"
         person_id = 1
         level_id = 1
     }    
-}
-
-it "should not be valid", {
-    def test_user_new = new User()
-    ensure(!test_user_new)
 }
 
 // Login specs
@@ -74,18 +70,8 @@ it "should require a person_id", {
     test_user.save().shouldBe false
 }
 
-it "should require a person_id different of 0", {
-    test_user.person_id = 0
-    test_user.save().shouldBe false
-}
-
 // Level specs
 it "should require a level_id", {
     test_user.level_id = null
-    test_user.save().shouldBe false
-}
-
-it "should require a level_id different of 0", {
-    test_user.level_id = 0
     test_user.save().shouldBe false
 }

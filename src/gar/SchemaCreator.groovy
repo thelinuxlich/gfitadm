@@ -6,7 +6,9 @@ package gar
  */
 class SchemaCreator {
 
-    static main(args) {
+    def current_table
+
+    static void main(args) {
         def sc = new SchemaCreator()
     }
 
@@ -19,7 +21,7 @@ class SchemaCreator {
                 'org.postgresql.Driver'
             )
 
-            def current_table = "users"
+            current_table = "users"
             println "Creating table $current_table..."
 
             db.execute '''

@@ -46,12 +46,12 @@ class User implements Serializable {
         if (
             login != "" &
             login ==~ /[a-zA-Z]/ &
-            login.length() >= 4 &
-            login.length() <= 15 &
+            login?.length() >= 4 &
+            login?.length() <= 15 &
             password != "" &
             password ==~ /[a-zA-Z0-9]/ &
-            password.length() >= 6 &
-            password.length() <= 12 &
+            password?.length() >= 6 &
+            password?.length() <= 12 &
             person_id != null &
             person_id != 0 &
             level_id != null &
