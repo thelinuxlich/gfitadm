@@ -9,13 +9,13 @@ class SchemaCreator {
     def current_table
 
     static void main(args) {
-        def sc = new SchemaCreator()
+        def sc = new SchemaCreator(args[0])
     }
 
-    SchemaCreator() {
+    SchemaCreator(database) {
         try {
             def db = groovy.sql.Sql.newInstance(
-                'jdbc:postgresql://localhost:5432/gfitadm',
+                "jdbc:postgresql://localhost:5432/$database",
                 'postgres',
                 'postgres',
                 'org.postgresql.Driver'

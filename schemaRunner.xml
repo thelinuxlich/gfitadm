@@ -13,6 +13,7 @@
     </target>
     <target name="run-schema" depends="compile-schema" description="Run the Schema Creator">
         <java classname="gar.SchemaCreator">
+            <arg value="gfitadm"/>
             <classpath refid="groovy.classpath"/>
             <classpath location="build/classes"/>
         </java>

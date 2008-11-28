@@ -8,6 +8,8 @@ import java.io.Serializable
 import javax.persistence.Basic
 import javax.persistence.Column
 import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.NamedQueries
 import javax.persistence.NamedQuery
@@ -32,9 +34,8 @@ import javax.persistence.Persistence
 )
 
 class User implements Serializable {
-    //static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     Integer id
     @Column(name = "login")
@@ -48,25 +49,21 @@ class User implements Serializable {
 
     def save() {
         if (
-            login != "" &&
-            login ==~ /\w+/ &&
-            (4..15).contains(login?.length()) &&
-            password != "" &&
-            password ==~ /\w+\d+/ &&
-            (6..12).contains(password?.length()) &&
-            person_id != null &&
-            level_id != null
+            login ==~ /[a-zA-Z]{4,15}/ &&
+            password ==~ /[a-zA-Z0-9]{6,12}/ &&
+            person_id && level_id
         ) {
             try {
                 persist(this)
                 return true
             } catch (Exception e) {
-                return false
                 println "ERROR: " + e.toString() + "\nmessage: " + e.getMessage()
+                return false
             }
         } else {
             return false
         }
+
     }
 
     def private persist(object) {

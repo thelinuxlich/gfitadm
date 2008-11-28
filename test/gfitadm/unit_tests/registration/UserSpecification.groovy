@@ -10,15 +10,10 @@ import javax.persistence.EntityManager
 import javax.persistence.EntityManagerFactory
 import javax.persistence.Persistence
 
-def test_user = new User()
+def test_user
 
 before "create a test user for each spec", {
-    test_user.with {
-        login = "user"
-        password = "123456"
-        person_id = 1
-        level_id = 1
-    }    
+    test_user = new User(login:"user",password:"123456",person_id:1,level_id:1)
 }
 
 it "should save if all validations passed", {
@@ -67,7 +62,7 @@ it """should require a password fill with
 }
 
 it "should require a password with 6 letters or more", {
-    test_user.login = "pass"
+    test_user.password = "pass"
     test_user.save().shouldBe false
 }
 

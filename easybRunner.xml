@@ -11,7 +11,21 @@
         <fileset dir="${libs.toplink.src}"/>
     </path>
     <target name="all" depends="run-easyb-stories"/>
-    <target name="run-easyb-specs" description="Run all specifications">
+    <taskdef name="groovyc" classname="org.codehaus.groovy.ant.Groovyc" classpathref="groovy.classpath"/>
+    <target name="create-schema" depends="run-schema"/>
+    <target name="compile-schema" description="Compiles SchemaCreator">
+        <groovyc destdir="build/classes" srcdir="src/gar"
+            includes="SchemaCreator.groovy" classpathref="groovy.classpath">
+        </groovyc>
+    </target>
+    <target name="run-schema" depends="compile-schema" description="Run the Schema Creator">
+        <java classname="gar.SchemaCreator">
+            <arg value="gfitadm"/>
+            <classpath refid="groovy.classpath"/>
+            <classpath location="build/classes"/>
+        </java>
+    </target>
+    <target name="run-easyb-specs" depends="create-schema" description="Run all specifications">
         <taskdef name="easyb" classname="org.disco.easyb.ant.BehaviorRunnerTask" classpathref="groovy.classpath"/>
         <easyb failureProperty="easyb.failed">
             <classpath>
