@@ -62,6 +62,7 @@ class User implements Serializable {
             }
         } else {
             return false
+            //return "ERROR: " + e.toString() + "\nmessage: " + e.getMessage()
         }
 
     }
