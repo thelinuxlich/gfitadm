@@ -20,7 +20,7 @@ class Gui {
         def userQuery = manager.createNamedQuery("User.findAll")
         def userlist = []
 
-        userQuery.getResultList().each { userlist << [login:it[0],password:it[1]]}
+        userQuery.getResultList().each { userlist << [login:it[1],password:it[2]]}
 
         SwingBuilder.build {
             frame(

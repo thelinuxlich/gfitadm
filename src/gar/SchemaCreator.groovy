@@ -29,7 +29,9 @@ class SchemaCreator {
                 CREATE TABLE users (
                     id SERIAL,
                     login VARCHAR(20),
-                    password VARCHAR(20)
+                    password VARCHAR(20),
+                    person_id INTEGER,
+                    level_id INTEGER
                 );
             '''
 

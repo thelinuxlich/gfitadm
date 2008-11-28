@@ -5,6 +5,10 @@ package gfitadm.unit_tests.registration
  * @author redpill
  */
 import gfitadm.registration.User
+import javax.persistence.NamedQuery
+import javax.persistence.EntityManager
+import javax.persistence.EntityManagerFactory
+import javax.persistence.Persistence
 
 def test_user = new User()
 
@@ -15,6 +19,14 @@ before "create a test user for each spec", {
         person_id = 1
         level_id = 1
     }    
+}
+
+it "should save if all validations passed", {
+    test_user.save().shouldBe true
+    def manager = Persistence.createEntityManagerFactory("gfitadmpu").createEntityManager()
+    def userQuery = manager.createNamedQuery("User.findByLogin").setParameter("login","user")
+    def userList = userQuery.getResultList()
+    userList.size().shouldBe 1
 }
 
 // Login specs

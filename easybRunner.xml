@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="EasybRunner" default="all" basedir=".">
+    <property file="nbproject/private/private.properties"/>
+    <property file="${user.properties.file}"/>
     <property environment="env"/>
     <path id="groovy.classpath">
         <fileset dir="${env.GROOVY_HOME}/embeddable/"/>
         <!--<fileset dir="/home/lpincini/projects/toolbox/easyb/"/> -->
+    </path>
+    <path id="toplink">
+        <fileset dir="${libs.toplink.src}"/>
     </path>
     <target name="all" depends="run-easyb-stories"/>
     <target name="run-easyb-specs" description="Run all specifications">
@@ -12,6 +17,7 @@
             <classpath>
                 <path refid="groovy.classpath" />
                 <pathelement path="build/classes/" />
+                <path refid="toplink"/>
             </classpath>
             <report location="build/specs.txt" format="txtspecification" />
             <behaviors dir="test">
