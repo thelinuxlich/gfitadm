@@ -27,7 +27,7 @@ class Gui {
                 title: "Teste com o modelo User",
                 pack: true,
                 show: true,
-                defaultCloseOperation:WC.EXIT_ON_CLOSE) 
+                defaultCloseOperation:WC.EXIT_ON_CLOSE)
             {
                 panel(layout: new MigLayout('fill')) {
                     label(text:'Listando usuários...')

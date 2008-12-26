@@ -30,6 +30,11 @@ it "should require a login", {
     test_user.save().shouldBe false
 }
 
+it "should require a unique login", {
+    test_user.save()
+    test_user.save().shouldBe false
+}
+
 it "should require a login fill with letters (Upper and Lower cases) only", {
     test_user.login = "user12"
     test_user.save().shouldBe false
@@ -74,6 +79,11 @@ it "should require a password with 12 letters or less", {
 // Person specs
 it "should require a person_id", {
     test_user.person_id = null
+    test_user.save().shouldBe false
+}
+
+it "should require a unique person_id", {
+    test_user.save()
     test_user.save().shouldBe false
 }
 

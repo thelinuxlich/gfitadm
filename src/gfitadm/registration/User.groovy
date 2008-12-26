@@ -35,16 +35,16 @@ import javax.persistence.Persistence
 
 class User implements Serializable {
     @Id
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     Integer id
-    @Column(name = "login")
+    @Column(name = "login", nullable = false)
     String login
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     String password
-    @Column(name = "person_id")
+    @Column(name = "person_id", nullable = false)
     Integer person_id
-    @Column(name = "level_id")
+    @Column(name = "level_id", nullable = false)
     Integer level_id
 
     def save() {
@@ -62,7 +62,6 @@ class User implements Serializable {
             }
         } else {
             return false
-            //return "ERROR: " + e.toString() + "\nmessage: " + e.getMessage()
         }
 
     }

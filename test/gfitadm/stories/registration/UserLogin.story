@@ -10,18 +10,18 @@ narrative "User's login", {
 
 scenario "User is not registered yet", {
     given "I am in the login's prompt dialog"
-    and "given I fill the 'Login' field with 'fakeuser'"
-    and "given I fill the 'Password' field with '123546'"
-    when "I push the 'Log Me In' button"
+    when "I fill the 'Login field with 'fake_user'"
+    and "I fill the 'Password field with 'fake_pass'"
+    and "I push the 'Log Me In' button"
     then "I should see 'Could not log you in as fakeuser.'"
 }
 
 scenario "User is alredy registered", {
     given "I am in the login's prompt dialog"
-    and "given I alredy registred the login 'user' with the password '1234'"
-    when "I fill the 'Login' field with 'user'"
-    and "when I fill the 'Password' field with '1234'"
-    then "I should see 'Welcome, user!'"
+    and "I alredy registred the login 'valid_user' with the password 'valid_pass'"
+    when "I fill the 'Login' field with 'valid_user'"
+    and "I fill the 'Password' field with 'valid_pass'"
+    then "I should see 'Welcome, 'valid_user'!'"
 }
 
 scenario "Registred user log out", {
